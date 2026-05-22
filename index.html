@@ -64,16 +64,64 @@ nav.scrolled {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.nav-logo:hover { opacity: 0.85; }
+
+.nav-logo-icon { height: 52px; width: auto; flex-shrink: 0; }
+
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+
+.nav-logo-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.7rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--white);
-  letter-spacing: 0.02em;
-  text-decoration: none;
+  letter-spacing: 0.06em;
   transition: color 0.4s;
 }
-.nav-logo img { height: 75px; width: auto; }
-  
+
+.nav-logo-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: var(--gold-lt);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: color 0.4s;
+}
+
+nav.scrolled .nav-logo-name { color: var(--ink); }
+nav.scrolled .nav-logo-sub  { color: var(--gold); }
+
+/* ─── SECTION PHOTOS ─── */
+.section-photo {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+  display: block;
+}
+
+.photo-overlay-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.photo-overlay-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(14,15,17,0.55) 0%, rgba(184,146,42,0.15) 100%);
+  border-radius: 20px;
+}
+
 nav.scrolled .nav-logo { color: var(--ink); }
 
 .nav-links {
@@ -1046,7 +1094,25 @@ footer {
 <!-- ─── NAV ─── -->
 <nav id="navbar">
 <a href="#" class="nav-logo">
-  <img src="logo-transparente.svg" alt="Pineda Talent Group" height="75">
+  <svg class="nav-logo-icon" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="navG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#E0BC6A"/>
+        <stop offset="100%" stop-color="#B8922A"/>
+      </linearGradient>
+      <clipPath id="navClip"><circle cx="50" cy="45" r="34"/></clipPath>
+    </defs>
+    <circle cx="50" cy="45" r="34" stroke="url(#navG)" stroke-width="2" fill="none"/>
+    <circle cx="50" cy="85" r="34" stroke="url(#navG)" stroke-width="2" fill="none"/>
+    <circle cx="50" cy="85" r="34" fill="url(#navG)" clip-path="url(#navClip)"/>
+    <circle cx="50" cy="45" r="4" fill="#D4AB4E"/>
+    <circle cx="50" cy="85" r="4" fill="#D4AB4E"/>
+    <circle cx="50" cy="65" r="3" fill="#0E0F11"/>
+  </svg>
+  <div class="nav-logo-text">
+    <span class="nav-logo-name">PINEDA</span>
+    <span class="nav-logo-sub">Talent Group</span>
+  </div>
 </a>
   <ul class="nav-links">
     <li><a href="#about">Nosotros</a></li>
@@ -1121,6 +1187,9 @@ footer {
         </div>
       </div>
       <div class="about-visual reveal">
+        <div class="photo-overlay-card" style="margin-bottom: 20px;">
+          <img src="meeting.jpg" alt="Executive Meeting" class="section-photo">
+        </div>
         <div class="about-card-main">
           <blockquote>"El talento correcto en el momento correcto <em>cambia el rumbo</em> de una empresa."</blockquote>
           <div>
@@ -1227,6 +1296,9 @@ footer {
   <div class="container" style="position:relative; z-index:2;">
     <div class="candidates-grid">
       <div class="candidates-text reveal">
+        <div class="photo-overlay-card" style="margin-bottom: 28px;">
+          <img src="interview.jpg" alt="Job Interview" class="section-photo" style="height: 260px;">
+        </div>
         <div class="section-label">Para Candidatos</div>
         <h2>Tu próximo <em>gran paso</em> comienza aquí</h2>
         <p>Registra tu perfil en nuestra base de datos. Cuando surja una oportunidad que se alinee con tu experiencia y aspiraciones, serás el primero en saberlo.</p>
@@ -1347,6 +1419,9 @@ footer {
       </div>
     </div>
     <div class="empresas-cta-box reveal">
+      <div class="photo-overlay-card" style="margin-bottom: 24px;">
+        <img src="handshake.jpg" alt="Business Handshake" class="section-photo" style="height:220px;">
+      </div>
       <h3>Hablemos sobre su<br><em>próxima búsqueda</em></h3>
       <p>Una conversación de 30 minutos es suficiente para entender su necesidad y proponerle un plan de acción concreto.</p>
       <a href="mailto:contacto@pinedatalentgroup.com" class="btn-dark">Agendar una llamada →</a>
