@@ -1374,27 +1374,31 @@ footer {
       </div>
       <h3>Hablemos sobre su<br><em>próxima búsqueda</em></h3>
       <p>Una conversación de 30 minutos es suficiente para entender su necesidad y proponerle un plan de acción concreto.</p>
-      <button onclick="document.getElementById('popup-1dFJlnoUGJx8LRwUJBJp').style.display='block'" class="btn-dark">Agendar una llamada →</button>
+      <button onclick="document.getElementById('modal-busco').style.display='flex'" class="btn-dark">Agendar una llamada →</button>
 
-      <!-- Popup Busco Talento -->
-      <iframe
-        src="https://api.leadconnectorhq.com/widget/form/1dFJlnoUGJx8LRwUJBJp"
-        style="display:none;width:100%;height:100%;border:none;border-radius:3px"
-        id="popup-1dFJlnoUGJx8LRwUJBJp"
-        data-layout="{'id':'POPUP'}"
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Busco Talento"
-        data-height="undefined"
-        data-layout-iframe-id="popup-1dFJlnoUGJx8LRwUJBJp"
-        data-form-id="1dFJlnoUGJx8LRwUJBJp"
-        title="Busco Talento"
-        data-modal-height="455">
-      </iframe>
+<!-- ─── MODAL BUSCO TALENTO ─── -->
+<div id="modal-busco" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9998; align-items:center; justify-content:center; padding:24px;">
+  <div style="background:#fff; border-radius:16px; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; position:relative;">
+    <button onclick="document.getElementById('modal-busco').style.display='none'" style="position:absolute; top:12px; right:16px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:#555; z-index:1;">✕</button>
+    <iframe
+      src="https://api.leadconnectorhq.com/widget/form/1dFJlnoUGJx8LRwUJBJp"
+      style="width:100%; height:520px; border:none; border-radius:16px; display:block;"
+      id="iframe-busco"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="Busco Talento"
+      data-height="520"
+      data-layout-iframe-id="iframe-busco"
+      data-form-id="1dFJlnoUGJx8LRwUJBJp"
+      title="Busco Talento">
+    </iframe>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1465,6 +1469,11 @@ function handleFormSubmit() {
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 4000);
 }
+
+// Cerrar modal al hacer clic fuera
+document.getElementById('modal-busco').addEventListener('click', function(e) {
+  if (e.target === this) this.style.display = 'none';
+});
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
